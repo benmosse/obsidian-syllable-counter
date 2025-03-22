@@ -1,0 +1,26 @@
+{
+  "name": "obsidian-syllable-counter",
+  "version": "1.0.0",
+  "description": "An Obsidian plugin that counts syllables per line in the editor pane",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "syllable",
+    "counter"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "builtin-modules": "^5.0.0",
+    "esbuild": "^0.25.1",
+    "obsidian": "^1.8.7",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.2"
+  }
+}

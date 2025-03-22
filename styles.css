@@ -1,0 +1,15 @@
+.syllable-counter {
+    font-family: monospace;
+    max-height: 200px;
+    overflow-y: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.syllable-counter:hover {
+    opacity: 1;
+}
+
+.syllable-counter div {
+    white-space: nowrap;
+}
