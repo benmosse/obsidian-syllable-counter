@@ -1,5 +1,5 @@
 {
-  "id": "obsidian-syllable-counter",
+  "id": "syllable-counter",
   "name": "Syllable Counter",
   "version": "1.0.5",
   "minAppVersion": "0.15.0",
@@ -7,5 +7,5 @@
   "author": "Benjamin Mosse",
   "authorUrl": "https://github.com/benmosse",
   "isDesktopOnly": false,
-  "fundingUrl": "https://github.com/benmosse/obsidian-syllable-counter"
+  "fundingUrl": "https://github.com/benmosse/syllable-counter"
 }

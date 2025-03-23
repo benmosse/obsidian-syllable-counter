@@ -1,4 +1,4 @@
-# Obsidian Syllable Counter
+# Syllable Counter
 
 A plugin for [Obsidian](https://obsidian.md) that counts syllables per line in the editor pane and displays the count in the margin.
 
