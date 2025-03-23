@@ -1,10 +1,11 @@
 {
   "id": "obsidian-syllable-counter",
   "name": "Syllable Counter",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "minAppVersion": "0.15.0",
   "description": "Counts syllables per line in the editor pane",
   "author": "Benjamin Mosse",
   "authorUrl": "https://github.com/benmosse",
-  "isDesktopOnly": false
+  "isDesktopOnly": false,
+  "fundingUrl": "https://github.com/benmosse/obsidian-syllable-counter"
 }

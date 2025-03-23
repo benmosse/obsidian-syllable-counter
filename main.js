@@ -32,7 +32,8 @@ var DEFAULT_SETTINGS = {
   maxLinesToProcess: 500,
   updateDebounceInterval: 500,
   onlyVisibleRange: true,
-  showZeroSyllables: false
+  showZeroSyllables: false,
+  verbosity: "verbose"
 };
 var SyllableCounterPlugin = class extends import_obsidian.Plugin {
   constructor() {
@@ -237,7 +238,11 @@ var SyllableCounterPlugin = class extends import_obsidian.Plugin {
           if (!lineElement) continue;
           const marker = document.createElement("div");
           marker.className = "syllable-marker";
-          marker.textContent = `${syllableCount} ${syllableCount === 1 ? "syllable" : "syllables"}`;
+          if (this.settings.verbosity === "verbose") {
+            marker.textContent = `${syllableCount} ${syllableCount === 1 ? "syllable" : "syllables"}`;
+          } else {
+            marker.textContent = `${syllableCount}`;
+          }
           if (lineElement.offsetTop !== void 0) {
             marker.style.top = `${lineElement.offsetTop}px`;
           }
@@ -323,6 +328,10 @@ var SyllableCounterSettingTab = class extends import_obsidian.PluginSettingTab {
     }));
     new import_obsidian.Setting(containerEl).setName("Show Zero Syllable Lines").setDesc("Show syllable count for lines with zero syllables").addToggle((toggle) => toggle.setValue(this.plugin.settings.showZeroSyllables).onChange(async (value) => {
       this.plugin.settings.showZeroSyllables = value;
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian.Setting(containerEl).setName("Verbosity").setDesc("Choose how syllable counts are displayed").addDropdown((dropdown) => dropdown.addOption("verbose", 'Verbose (e.g., "5 syllables")').addOption("terse", 'Terse (e.g., "5")').setValue(this.plugin.settings.verbosity).onChange(async (value) => {
+      this.plugin.settings.verbosity = value;
       await this.plugin.saveSettings();
     }));
   }

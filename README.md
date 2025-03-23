@@ -36,6 +36,9 @@ Once enabled, the plugin will automatically display syllable counts in the right
 - **Update Delay**: Delay in milliseconds before updating syllable counts after changes (default: 500ms)
 - **Only Process Visible Range**: Only count syllables for visible lines to improve performance (default: enabled)
 - **Show Zero Syllable Lines**: Show syllable count for lines with zero syllables (default: disabled)
+- **Verbosity**: Choose how syllable counts are displayed (default: verbose)
+  - Verbose: Shows "5 syllables"
+  - Terse: Shows just "5"
 
 ## How It Works
 

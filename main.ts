@@ -5,13 +5,15 @@ interface SyllableCounterSettings {
     updateDebounceInterval: number;
     onlyVisibleRange: boolean;
     showZeroSyllables: boolean;
+    verbosity: 'verbose' | 'terse';
 }
 
 const DEFAULT_SETTINGS: SyllableCounterSettings = {
     maxLinesToProcess: 500,
     updateDebounceInterval: 500,
     onlyVisibleRange: true,
-    showZeroSyllables: false
+    showZeroSyllables: false,
+    verbosity: 'verbose'
 };
 
 export default class SyllableCounterPlugin extends Plugin {
@@ -302,7 +304,13 @@ export default class SyllableCounterPlugin extends Plugin {
                     // Create the syllable marker
                     const marker = document.createElement('div');
                     marker.className = 'syllable-marker';
-                    marker.textContent = `${syllableCount} ${syllableCount === 1 ? 'syllable' : 'syllables'}`;
+                    
+                    // Set text based on verbosity setting
+                    if (this.settings.verbosity === 'verbose') {
+                        marker.textContent = `${syllableCount} ${syllableCount === 1 ? 'syllable' : 'syllables'}`;
+                    } else {
+                        marker.textContent = `${syllableCount}`;
+                    }
                     
                     // Position the marker relative to the line
                     if (lineElement.offsetTop !== undefined) {
@@ -456,6 +464,18 @@ class SyllableCounterSettingTab extends PluginSettingTab {
                 .setValue(this.plugin.settings.showZeroSyllables)
                 .onChange(async (value) => {
                     this.plugin.settings.showZeroSyllables = value;
+                    await this.plugin.saveSettings();
+                }));
+
+        new Setting(containerEl)
+            .setName('Verbosity')
+            .setDesc('Choose how syllable counts are displayed')
+            .addDropdown(dropdown => dropdown
+                .addOption('verbose', 'Verbose (e.g., "5 syllables")')
+                .addOption('terse', 'Terse (e.g., "5")')
+                .setValue(this.plugin.settings.verbosity)
+                .onChange(async (value: 'verbose' | 'terse') => {
+                    this.plugin.settings.verbosity = value;
                     await this.plugin.saveSettings();
                 }));
     }

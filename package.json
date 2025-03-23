@@ -1,6 +1,6 @@
 {
   "name": "obsidian-syllable-counter",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "An Obsidian plugin that counts syllables per line in the editor pane",
   "main": "main.js",
   "scripts": {
